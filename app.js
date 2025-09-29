@@ -1,9 +1,12 @@
+import dotenv from "dotenv"
+dotenv.config();
 import express from "express"
 import connect from "./db/connect.js"
 import UserRoutes from "./routes/User.routes.js"
 import cookieParser from "cookie-parser";
 import cors from "cors"
 import BlogsRoutes from "./routes/Blogs.routes.js";
+
 
 //! initializing the express function and storing in a app varaible 
 const app = express();
@@ -25,7 +28,7 @@ app.use(cors({
 }))
 
 //! to run our server at port 3000 and connecting db 
-app.listen(3000,()=>{
+app.listen(process.env.PORT,()=>{
     connect();
     console.log("Server is running ");
 })
